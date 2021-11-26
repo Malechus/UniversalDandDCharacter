@@ -1,0 +1,139 @@
+{
+	"title": "Universal DandD Character Schema",
+	"description": "A universal template for saving Dungeons and Dragons 5e character data in JSON format accross applications. Schema assumes that where an application can determine subsequent stats, it will, i.e. proficiency bonus can be determined from class and level, and skill bonus can be determined from proficiency bonus and array of proficiencies.",
+	"type": "object",
+	
+	"properties": {
+		"guid": {
+			"description": "app or user generated guid for the character",
+			"type": "string"
+		},
+		"name": {
+			"description": "app or user generated in-game name of the character",
+			"type": "string"
+		},
+		"class": {
+			"description": "in-game class of the character",
+			"type": "string"
+		},
+		"subclass": {
+			"description": "class flavor derived from chap. 2 of the PHB",
+			"type": "string"
+		},
+		"race": {
+			"description": "in-game race of the character",
+			"type": "string"
+		},
+		"background": {
+			"description": "character's background derived from PHB chap. 4",
+			"type": "string"
+		},
+		"playerName": {
+			"description": "the real world name of the player",
+			"type": "string"
+		},
+		"level": {
+			"description": "the current level of the character",
+			"type": "number"
+		},
+		"alignment": {
+			"description": "the character's alignment on the good-evil, lawful-chaotic matrix",
+			"type": "string"
+		},
+		"experience": {
+			"description": "the current number of experience points the character has",
+			"type": "number"
+		},
+		"strength": {
+			"description": "the character's strength score",
+			"type": "number"
+		},
+		"dexterity": {
+			"description": "the character's dexterity score",
+			"type": "number"
+		},
+		"constitution": {
+			"description": "the character's constitution score",
+			"type": "number"
+		},
+		"intelligence": {
+			"description": "the character's intelligence score",
+			"type": "number"
+		},
+		"wisdom": {
+			"description": "the character's wisdom score",
+			"type": "number"
+		},
+		"charisma": {
+			"description": "the character's charisma score",
+			"type": "number"
+		},
+		"armorClass": {
+			"description": "the character's normal armor class",
+			"type": "number"
+		},
+		"maxHP": {
+			"description": "the character's current maximum hit points",
+			"type": "number"
+		},
+		"weapons": {
+			"description": "the character's currently carried weapons",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"toHitDice": {
+						"type": "string"
+					},
+					"toHitBonus": {
+						"type": "number"
+					},
+					"damageDice": {
+						"type": "string"
+					},
+					"damageBonus": {
+						"type": "number"
+					}
+				},
+				"required": ["name", "toHitDice", "toHitBonus", "damageDice", "damageBonus"]
+			}
+		},
+		"armor": {
+			"description": "the character's currently equipped armor",
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"acBonus": {
+					"type": "number"
+				},
+				"maxDexBonus": {
+					"type": "number"
+				}
+			},
+			"required": ["name", "acBonus", "maxDexBonus"]
+		},
+		"equipment": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"money": {
+			"description": "the fractional amount of money the character possesses, expressed in gold pieces",
+			"type": "number"
+		},
+		"proficiencies": {
+			"description": "a list of all proficiencies the character possesses, including skills, equipment, languages",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		}
+	},
+	"required": ["guid", "name", "class", "subclass", "race", "playerName", "level", "alignment", "experience", "strength", "dexterity", "constitution", "wisdom", "intelligence", "charisma", "armorClass", "maxHP", "proficiencies"]
+}
